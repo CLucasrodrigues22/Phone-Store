@@ -7,10 +7,7 @@
     use App\Route;
 
 
-    $route = new Route();
-    echo '<pre>';
-    print_r($route->getUrl());
-
+    $routes = new Route();
 
 
 
