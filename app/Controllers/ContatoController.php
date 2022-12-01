@@ -5,6 +5,6 @@ namespace App\Controllers;
 class ContatoController {
     
     public function contato() {
-        echo 'Controller contato';
+        require_once "../resources/views/home/contato.phtml";
     }
 }

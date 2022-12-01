@@ -5,6 +5,10 @@ namespace App\Controllers;
 class SobreController {
     
     public function sobre() {
-        echo 'Controller Sobre';
+        $this->view('home/sobre');
+    }
+
+    public function view($view)  { // $this->view('dir/view');
+        require_once "../resources/views/".$view.".phtml";
     }
 }
