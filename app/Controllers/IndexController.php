@@ -2,22 +2,12 @@
 
 namespace App\Controllers;
 
-use stdClass;
+use MVC\Controller\Action;
 
-class IndexController {
-    
-    private $view;
-    public function __construct()
-    {
-        $this->view = new stdClass();
-    }
+class IndexController extends Action{
 
     public function index() {
         $this->view->dados = array('Casa', 'Carro', 'Moto');
-        $this->view('home/index');
-    }
-
-    public function view($view)  { // $this->view('dir/view');
-        require_once "../resources/views/".$view.".phtml";
+        $this->view('home/index', 'header');
     }
 }
