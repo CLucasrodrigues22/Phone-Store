@@ -15,18 +15,6 @@ class Route extends Bootstrap {
             'action' => 'index'
         );
 
-        $routes['sobre'] = array(
-            'route' => '/sobre',
-            'controller' => 'SobreController',
-            'action' => 'sobre'
-        );
-
-        $routes['contato'] = array(
-            'route' => '/contato',
-            'controller' => 'ContatoController',
-            'action' => 'contato'
-        );
-
         $this->setRoutes($routes);
     }
 }
