@@ -1,14 +1,13 @@
 <?php
 
 namespace MVC\Controller;
-use stdClass;
 
 abstract class Action {
     protected $view;
 
     public function __construct()
     {
-        $this->view = new stdClass();
+        $this->view = new \stdClass();
     }
 
     // renderiza o layout da aplicação passada por parametro no controller
