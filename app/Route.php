@@ -9,22 +9,30 @@ class Route extends Bootstrap {
     // função para iniciar rotas
     protected function initRoutes() {
 
+        // Rota Index Principal
         $routes['home'] = array(
             'route' => '/',
             'controller' => 'IndexController',
             'action' => 'index'
         );
-
-        $routes['signin'] = array(
-            'route' => '/signin',
-            'controller' => 'SigninController',
+        
+        // Rotas de CRUD usuários
+        $routes['listusers'] = array(
+            'route' => '/listusers',
+            'controller' => 'UsersController',
             'action' => 'index'
         );
 
-        $routes['createUser'] = array(
-            'route' => '/createUser',
-            'controller' => 'SigninController',
-            'action' => 'createUser'
+        $routes['createusers'] = array(
+            'route' => '/createusers',
+            'controller' => 'UsersController',
+            'action' => 'create'
+        );
+
+        $routes['storeusers'] = array(
+            'route' => '/storeusers',
+            'controller' => 'UsersController',
+            'action' => 'store'
         );
 
         $this->setRoutes($routes);

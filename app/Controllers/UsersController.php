@@ -9,15 +9,22 @@ use MVC\Controller\Action;
 use MVC\Init\Bootstrap;
 use MVC\Model\Container;
 
-class SigninController extends Action
+class UsersController extends Action
 {
+    // List all users
     public function index()
     {
-        $this->view('home/create', 'header');
+        $this->view('users/index', 'header');
     }
 
-    public function createUser()
+    // User registration form
+    public function create()
     {
+        $this->view('users/create', 'header');
+    }
+
+    // Save user's data in database
+    public function store() {
         try {
             // getModel() de MVC\Model\Container
             $userData = Container::getModel('Users');
@@ -42,7 +49,7 @@ class SigninController extends Action
                 if (array_search($extension, $upload['extensoes']) === false) { // percorre array de $upload
                     // se tiver erro >
                     $feedback = 'Só é aceito arquivos com extensões jpg, png ou gif';
-                    header("Location: /signin?feedback=$feedback");
+                    header("Location: /create?feedback=$feedback");
                     exit;
                 }
 
@@ -74,8 +81,23 @@ class SigninController extends Action
             //echo 'Erro, Banco de dados instavel'.' - '.$e;
             $feedback = 'createerror';
 
-            header("Location: /users/signin?feedback=$feedback");
+            header("Location: /createusers?feedback=$feedback");
             exit;
         }
+    }
+
+    // Show user for ID
+    public function show($id) {
+
+    }
+
+    // Update user
+    public function update($id) {
+
+    }
+
+    // Delete user
+    public function delete($id) {
+        
     }
 }
