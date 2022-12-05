@@ -11,8 +11,8 @@ use MVC\Model\Container;
 
 class IndexController extends Action{
 
-    public function index() {
-
+    public function index() 
+    {
         $this->view('home/index', 'header');
     }
 }

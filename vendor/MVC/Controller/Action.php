@@ -16,8 +16,8 @@ abstract class Action {
         $this->view->page = $view;
 
         //validando se o layout existe
-        if(file_exists("../resources/views/layouts/".$layout.".phtml")) {
-            require_once "../resources/views/layouts/".$layout.".phtml";
+        if(file_exists("../resources/layouts/".$layout.".phtml")) {
+            require_once "../resources/layouts/".$layout.".phtml";
         } else {
             echo 'Layout não encontrado';
         }

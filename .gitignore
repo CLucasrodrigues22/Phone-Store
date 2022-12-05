@@ -1,1 +1,4 @@
 /node_modules
+/public/storage/users/*.png
+/public/storage/users/*.jpg
+/public/storage/users/*.gif

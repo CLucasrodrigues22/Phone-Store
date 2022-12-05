@@ -7,9 +7,11 @@ use MVC\Model\Model;
 class Users extends Model {
 
     private $id;
-    private $name;
+    private $profile_id;
+    private $fullname;
     private $email;
     private $senha;
+    private $photo;
 
     public function __get($attr) {
         return $this->$attr;
