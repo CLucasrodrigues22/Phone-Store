@@ -14,7 +14,13 @@ class UsersController extends Action
     // List all users
     public function index()
     {
+        // getModel() de MVC\Model\Container
+        $userData = Container::getModel('Users');
+        echo '<pre>';
+        print_r($userData->showAll());
+
         $this->view('users/index', 'header');
+        
     }
 
     // User registration form
@@ -70,7 +76,7 @@ class UsersController extends Action
             $userData->__set('email', $_POST['email']);
             $userData->__set('senha', password_hash($_POST['senha'], PASSWORD_BCRYPT));
 
-            // Enviando atributos setados para o model inserir no banco
+            // Validar condições estabelecidas no model e depois enviando dados atributos setados para o model inserir no banco
             $userData->create();
 
             $feedback = 'createsuccess';

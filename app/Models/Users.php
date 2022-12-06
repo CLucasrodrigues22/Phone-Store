@@ -34,7 +34,14 @@ class Users extends Model {
 
         return $this;
     }
-    // Validar se um cadastro pode ser feito
 
-    // Recuperar um usuário por e-mail
+    // Recuperar todos os usuários
+    public function showAll() {
+        $q = "select * from users";
+        $stmt = $this->db->prepare($q);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
