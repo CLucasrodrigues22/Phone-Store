@@ -1,93 +1,47 @@
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tabela/</span> Lista de usuários</h4>
 
   <!-- Basic Bootstrap Table -->
   <div class="card text-center">
-    <h5 class="card-header">Table Basic</h5>
+    <h5 class="card-header">Todos os usuários</h5>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>
           <tr>
             <th>Foto de perfil</th>
-            <th>Nome</th>
+            <th>Nome Completo</th>
             <th>E-mail</th>
-            <th>Perfil</th>
+            <th>Tipo de Perfil</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
-          <tr>
-            <td class="pl-2">
-              <ul class="list-unstyled users-list m-0 avatar-group d-flex" style="padding-left: 41%;padding-right: 41%;">
-                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                  class="avatar avatar-xs pull-up" title="Lucas Rodrigues">
-                  <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                </li>
-              </ul>
-            </td>
-            <td>Lucas Rodrigues</td>
-            <td>lucas@email.com</td>
-            <td><span class="badge bg-label-primary me-1">Administrador</span></td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Editar</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
+          <?php foreach ($this->view->dados as $indice => $user) { ?>
+            <tr>
+              <td class="pl-2">
+                <ul class="list-unstyled users-list m-0 avatar-group d-flex" style="padding-left: 41%;padding-right: 41%;">
+                  <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                    class="avatar avatar-xs pull-up" title="Lucas Rodrigues">
+                    <img src="storage/users/<?= $user['photo'] ?>" alt="Avatar" class="rounded-circle" />
+                  </li>
+                </ul>
+              </td>
+              <td><?= $user['fullname'] ?></td>
+              <td><?= $user['email'] ?></td>
+              <td><span class="badge bg-label-primary me-1"><?= $user['profile_id'] ?></span></td>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/showuser"><i class="bx bx-edit-alt me-1"></i>Editar</a>
+                    <a class="dropdown-item" href=""><i class="bx bx-trash me-1"></i>Deletar</a>
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="pl-2">
-              <ul class="list-unstyled users-list m-0 avatar-group d-flex" style="padding-left: 41%;padding-right: 41%;">
-                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                  class="avatar avatar-xs pull-up" title="Lucas Rodrigues">
-                  <img src="../storage/users/" alt="Avatar" class="rounded-circle" />
-                </li>
-              </ul>
-            </td>
-            <td>Lucas Rodrigues</td>
-            <td>lucas@email.com</td>
-            <td><span class="badge bg-label-primary me-1">Administrador</span></td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Editar</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="pl-2">
-              <ul class="list-unstyled users-list m-0 avatar-group d-flex" style="padding-left: 41%;padding-right: 41%;">
-                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                  class="avatar avatar-xs pull-up" title="Lucas Rodrigues">
-                  <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                </li>
-              </ul>
-            </td>
-            <td>Lucas Rodrigues</td>
-            <td>lucas@email.com</td>
-            <td><span class="badge bg-label-primary me-1">Administrador</span></td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Editar</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
-                </div>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          <?php } ?> 
         </tbody>
       </table>
     </div>

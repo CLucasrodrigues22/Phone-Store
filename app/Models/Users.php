@@ -37,11 +37,12 @@ class Users extends Model {
 
     // Recuperar todos os usuários
     public function showAll() {
-        $q = "select * from users";
-        $stmt = $this->db->prepare($q);
-        $stmt->setFetchMode(\PDO::FETCH_CLASS);
-        $stmt->execute();
+        $q = "select id, profile_id, fullname, email, photo from users";
+        return $this->db->query($q)->fetchAll();
+    }
 
-        return $stmt->fetchAll();
+    // Atualizar dados dos usuários
+    public function update() {
+        
     }
 }

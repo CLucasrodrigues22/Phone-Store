@@ -35,6 +35,12 @@ class Route extends Bootstrap {
             'action' => 'store'
         );
 
+        $routes['showuser'] = array (
+            'route' => '/showuser',
+            'controller' => 'UserController',
+            'action' => 'show'
+        );
+
         $this->setRoutes($routes);
     }
 }

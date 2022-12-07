@@ -15,12 +15,11 @@ class UsersController extends Action
     public function index()
     {
         // getModel() de MVC\Model\Container
-        $userData = Container::getModel('Users');
-        echo '<pre>';
-        print_r($userData->showAll());
+        $users = Container::getModel('Users');
 
-        $this->view('users/index', 'header');
+        $this->view->dados = $users->showAll();
         
+        $this->view('users/index', 'header');
     }
 
     // User registration form
@@ -94,7 +93,7 @@ class UsersController extends Action
 
     // Show user for ID
     public function show($id) {
-
+        
     }
 
     // Update user
