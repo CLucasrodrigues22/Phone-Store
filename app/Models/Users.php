@@ -41,8 +41,11 @@ class Users extends Model {
         return $this->db->query($q)->fetchAll();
     }
 
-    // Atualizar dados dos usuários
-    public function update() {
-        
+    // Monstra dados do usuário por ID
+    public function show($id) {
+        $q = "select id, profile_id, fullname, email, photo from users where id = $id";
+        return $this->db->query($q)->fetch();
     }
+
+    
 }

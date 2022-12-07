@@ -92,17 +92,23 @@ class UsersController extends Action
     }
 
     // Show user for ID
-    public function show($id) {
-        
+    public function show() {
+        $id = $_GET['id'];
+
+        $user = Container::getModel('Users');
+
+        $this->view->dados = $user->show($id);
+
+        $this->view('users/show', 'header');
     }
 
     // Update user
-    public function update($id) {
+    public function update() {
+        $id = $_GET['id'];
+        
+        $user = Container::getModel('Users');
 
-    }
-
-    // Delete user
-    public function delete($id) {
+        // Verificar se nova foto foi inserida
         
     }
 }
