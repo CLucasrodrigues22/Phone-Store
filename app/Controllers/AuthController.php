@@ -18,20 +18,27 @@ class AuthController extends Action
     public function auth() {
 
         $user = Container::getModel('Auth');
-        // Resgatando dados de login do formulário
-        $email = $_POST['email'];
         $senha = $_POST['senha'];
-        $senhaBcrypt = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+        $user->__set('email', $_POST['email']);
+        $userdata = $user->validateUser();
 
-        $user->validateUser($email, $senhaBcrypt);
-
-        if(password_verify($senha, $senhaBcrypt))
+        if(is_array($userdata))
         {
-            echo 'senha valida';
+            if(password_verify($senha, $userdata['senha'])) {
+                session_start();
+                $userData = $userdata;
+                $feedback = 'Sessão iniciada';
+                header("Location: /home?feedback=$feedback");
+                exit;
+            }else {
+                $feedback = 'Usuário ou senha inválida, tente novamente!';
+                header("Location: /?feedback=$feedback");
+                exit;
+            }
         } else {
-            echo 'senha invalida';
+            $feedback = 'Erro no login, favor contatar o Administrador';
+            header("Location: /?feedback=$feedback");
+            exit;
         }
-        
-        
     }
 }

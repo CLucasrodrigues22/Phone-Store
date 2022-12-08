@@ -6,8 +6,12 @@ use MVC\Model\Model;
 
 class Auth extends Model 
 {
+    private $id;
+    private $profile_id;
+    private $fullname;
     private $email;
     private $senha;
+    private $photo;
 
     public function __get($attr) {
         return $this->$attr;
@@ -18,14 +22,14 @@ class Auth extends Model
     }
 
     // User Validate
-    public function validateUser($email, $senhaBcrypt)
+    public function validateUser()
     {
-        $q = "select * from users where email = :email and senha = :senha";
+        $q = "select * from users where email = :email";
         $stmt = $this->db->prepare($q);
-        $stmt->bindValue(':email', $email);
-        $stmt->bindValue(':senha', $senhaBcrypt);
+        $stmt->bindParam(':email', $this->__get('email'));
+        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
         $stmt->execute();
-        
-        return $this;
+
+        return $stmt->fetch();
     }
 }
