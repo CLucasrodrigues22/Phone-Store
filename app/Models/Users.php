@@ -22,7 +22,8 @@ class Users extends Model {
     }
 
     // Salvar dados
-    public function create() {
+    public function create() 
+    {
         $q = "insert into users(profile_id, fullname, email, senha, photo) values (:profile_id, :fullname, :email, :senha, :photo)";
         $stmt = $this->db->prepare($q);
         $stmt->bindValue(':profile_id', $this->__get('profile_id'));
@@ -36,16 +37,37 @@ class Users extends Model {
     }
 
     // Recuperar todos os usuários
-    public function showAll() {
+    public function showAll() 
+    {
         $q = "select id, profile_id, fullname, email, photo from users";
         return $this->db->query($q)->fetchAll();
     }
 
     // Monstra dados do usuário por ID
-    public function show($id) {
-        $q = "select id, profile_id, fullname, email, photo from users where id = $id";
+    public function show($id) 
+    {
+        $q = "select id, profile_id, fullname, email, senha, photo from users where id = $id";
         return $this->db->query($q)->fetch();
     }
 
-    
+    public function update($id)
+    {
+        $q = "update users set profile_id = :profile_id, fullname = :fullname, email = :email, senha = :senha, photo = :photo where id = $id";
+        $stmt = $this->db->prepare($q);
+        $stmt->bindValue(':profile_id', $this->__get('profile_id'));
+        $stmt->bindValue(':fullname', $this->__get('fullname'));
+        $stmt->bindValue(':email', $this->__get('email'));
+        $stmt->bindValue(':senha', $this->__get('senha'));
+        $stmt->bindValue(':photo', $this->__get('photo'));
+        $stmt->execute();
+        
+        return $this;
+    }
+
+    public function delete($id) 
+    {
+        $q = "delete from users where id = $id";
+        $stmt = $this->db->prepare($q);
+        $stmt->execute();
+    }
 }
