@@ -11,8 +11,15 @@ use MVC\Model\Container;
 
 class IndexController extends Action{
 
+    
     public function index() 
     {
-        $this->view('home/index', 'header');
+        session_start();
+        if($_SESSION['id'] != '')
+        {
+            $this->view('home/index', 'header');
+        } else {
+            header('Location: /?login=erro');
+        }
     }
 }

@@ -10,65 +10,84 @@ class Route extends Bootstrap {
     protected function initRoutes() {
         
         // Rotas de Sessão do usuário
-        $routes['login'] = array (
-            'route' => '/',
-            'controller' => 'AuthController',
-            'action' => 'index'
-        );
+            // Rota de formulário de login
+            $routes['login'] = array (
+                'route' => '/',
+                'controller' => 'AuthController',
+                'action' => 'index'
+            );
 
-        $routes['auth'] = array (
-            'route' => '/auth',
-            'controller' => 'AuthController',
-            'action' => 'auth'
-        );
+            // Rota para validar login
+            $routes['auth'] = array (
+                'route' => '/auth',
+                'controller' => 'AuthController',
+                'action' => 'auth'
+            );
 
-        // Rota Index Principal
-        $routes['home'] = array (
-            'route' => '/home',
-            'controller' => 'IndexController',
-            'action' => 'index'
-        );
-        
-        // Rotas de CRUD usuários
-        $routes['listusers'] = array (
-            'route' => '/listusers',
-            'controller' => 'UsersController',
-            'action' => 'index'
-        );
+            // Rota para encerrar sessão
+            $routes['logout'] = array (
+                'route' => '/logout',
+                'controller' => 'AuthController',
+                'action' => 'logout'
+            );
 
-        // Formulário de criação de usuários
-        $routes['createusers'] = array (
-            'route' => '/createusers',
-            'controller' => 'UsersController',
-            'action' => 'create'
-        );
+        // Rota privadas da aplicação
+            // Rota de incio
+            $routes['home'] = array (
+                'route' => '/home',
+                'controller' => 'IndexController',
+                'action' => 'index'
+            );
+            
+            // Lista de todos os usuários
+            $routes['listusers'] = array (
+                'route' => '/listusers',
+                'controller' => 'UsersController',
+                'action' => 'index'
+            );
 
-        // Salva usuário no banco
-        $routes['storeusers'] = array (
-            'route' => '/storeusers',
-            'controller' => 'UsersController',
-            'action' => 'store'
-        );
+            // Formulário de criação de usuários
+            $routes['createusers'] = array (
+                'route' => '/createusers',
+                'controller' => 'UsersController',
+                'action' => 'create'
+            );
 
-        // Montra dados do usuário pelo ID
-        $routes['showuser'] = array (
-            'route' => '/showuser',
-            'controller' => 'UsersController',
-            'action' => 'show'
-        );
+            // Salva usuário no banco
+            $routes['storeusers'] = array (
+                'route' => '/storeusers',
+                'controller' => 'UsersController',
+                'action' => 'store'
+            );
 
-        // Atualiza dados do usuário no banco
-        $routes['updateuser'] = array (
-            'route' => '/updateuser',
-            'controller' => 'UsersController',
-            'action' => 'update'
-        );
+            // Montra dados do usuário pelo ID
+            $routes['showuser'] = array (
+                'route' => '/showuser',
+                'controller' => 'UsersController',
+                'action' => 'show'
+            );
 
-        $routes['deleteuser'] = array (
-            'route' => '/deleteuser',
-            'controller' => 'UsersController',
-            'action' => 'delete'
-        );
+            // Atualiza dados do usuário no banco
+            $routes['updateuser'] = array (
+                'route' => '/updateuser',
+                'controller' => 'UsersController',
+                'action' => 'update'
+            );
+
+            // Deletar usuário do banco
+            $routes['deleteuser'] = array (
+                'route' => '/deleteuser',
+                'controller' => 'UsersController',
+                'action' => 'delete'
+            );
+            
+            // Formulário de criação de perfil
+            $routes['createprofile'] = array (
+                'route' => '/createprofile',
+                'controller' => 'ProfileController',
+                'action' => 'create'
+            );
+
         $this->setRoutes($routes);
     }
 }

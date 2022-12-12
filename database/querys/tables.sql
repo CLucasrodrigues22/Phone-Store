@@ -17,3 +17,5 @@ create table users (
     FOREIGN KEY (profile_id)
         REFERENCES profiles(id)
 );
+
+insert into users (id, profile_id, fullname, email, senha, photo) values (1, 1, 'Lucas Rodrigues', 'lucas@email.com', '$2y$10$Gmz.25k5ftPF.2wv8tPwFePbai4.xQN6M9VxGXn6vrpWIeKF/hmue', 'photo.png');

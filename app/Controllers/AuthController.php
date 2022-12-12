@@ -26,7 +26,7 @@ class AuthController extends Action
         {
             if(password_verify($senha, $userdata['senha'])) {
                 session_start();
-                $userData = $userdata;
+                $_SESSION = $userdata;
                 $feedback = 'Sessão iniciada';
                 header("Location: /home?feedback=$feedback");
                 exit;
@@ -40,5 +40,13 @@ class AuthController extends Action
             header("Location: /?feedback=$feedback");
             exit;
         }
+    }
+
+    public function logout() {
+        session_start();
+        session_destroy();
+        $feedback = 'Sessão finalizada';
+        header("Location: /?feedback=$feedback");
+        exit;
     }
 }
