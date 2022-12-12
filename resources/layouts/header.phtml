@@ -47,7 +47,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link">
+                    <a href="/home" class="app-brand-link">
                         <h3 class="app-brand-text menu-text fw-bolder ms-2 title">Phone Store</h3>
                     </a>
 
@@ -162,7 +162,7 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span class="fw-semibold d-block"><?php echo $_SESSION['fullname'] ?></span>
-                                                    <small class="text-muted"><?php echo $_SESSION['profile_id'] ?></small>
+                                                    <small class="text-muted"><?php echo $_SESSION['email'] ?></small>
                                                 </div>
                                             </div>
                                         </a>
@@ -186,7 +186,7 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="auth-login-basic.html">
+                                        <a class="dropdown-item" href="/logout">
                                             <i class="bx bx-power-off me-2"></i>
                                             <span class="align-middle">Encerrar Sessão</span>
                                         </a>

@@ -28,7 +28,7 @@
               </td>
               <td><?= $user['fullname'] ?></td>
               <td><?= $user['email'] ?></td>
-              <td><span class="badge bg-label-primary me-1"><?= $user['profile_id'] ?></span></td>
+              <td><span class="badge bg-label-primary me-1"><?= $user['profiles'] ?></span></td>
               <td>
                 <div class="dropdown">
                   <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -36,7 +36,9 @@
                   </button>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="/showuser?id=<?= $user['id'] ?>"><i class="bx bx-edit-alt me-1"></i>Editar</a>
-                    <a class="dropdown-item" href="/deleteuser?id=<?= $user['id'] ?>"><i class="bx bx-trash me-1"></i>Deletar</a>
+                    <?php if($_SESSION['id'] != $user['id']): ?>
+                      <a class="dropdown-item" href="/deleteuser?id=<?= $user['id'] ?>"><i class="bx bx-trash me-1"></i>Deletar</a>
+                    <?php endif; ?>
                   </div>
                 </div>
               </td>

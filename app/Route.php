@@ -81,11 +81,25 @@ class Route extends Bootstrap {
                 'action' => 'delete'
             );
             
+            // Lista de todos os tipos de perfis 
+            $routes['listprofiles'] = array (
+                'route' => '/listprofiles',
+                'controller' => 'ProfileController',
+                'action' => 'index'
+            );
+
             // Formulário de criação de perfil
             $routes['createprofile'] = array (
                 'route' => '/createprofile',
                 'controller' => 'ProfileController',
                 'action' => 'create'
+            );
+            
+            // Armazenar dados do perfil no banco
+            $routes['storeprofile'] = array (
+                'route' => '/storeprofile',
+                'controller' => 'ProfileController',
+                'action' => 'store'
             );
 
         $this->setRoutes($routes);

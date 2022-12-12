@@ -39,7 +39,18 @@ class Users extends Model {
     // Recuperar todos os usuários
     public function showAll() 
     {
-        $q = "select id, profile_id, fullname, email, photo from users";
+        // $q = "select id, profile_id, fullname, email, photo from users";
+        $q = "select
+                U.id,
+                U.fullname,
+                U.email,
+                U.photo,
+                P.profileName as profiles
+                from
+                users U
+                inner join 
+                profiles P
+                on U.profile_id = P.id";
         return $this->db->query($q)->fetchAll();
     }
 
