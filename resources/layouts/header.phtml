@@ -235,7 +235,7 @@
 
     <!-- Modal alterar senha -->
     <div class="modal fade" id="alterSenha" tabindex="-1" aria-hidden="true">
-        <form action="/updatepassword" method="POST">
+        <form action="/updatepassword" method="POST" name="formsenha">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -247,19 +247,19 @@
                         <div class="row mb-3">
                             <div class="col md-12">
                                 <label for="senhaAtual" class="form-label">Senha Atual</label>
-                                <input type="password" id="senhaAtual" class="form-control" name="senhaAtual" placeholder="Digite a senha atual" />
-                            </div>   
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col md-12">
-                                <label for="novaSenha" class="form-label">Nova Senha</label>
-                                <input type="password" id="novaSenha" class="form-control" placeholder="Digite uma nova senha" />
+                                <input type="password" id="senhaAtual" class="form-control" name="senhaAtual" placeholder="Digite a senha atual" required />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col md-12">
-                                <label for="verificarSenha" class="form-label">Confirmar Senha</label>
-                                <input type="password" id="verificarSenha" class="form-control" name="senha" placeholder="Digite a nova senha novamente" />
+                                <label for="novaSenha" class="form-label">Nova Senha</label>
+                                <input type="password" id="novaSenha" class="form-control" name="novaSenha" placeholder="Digite uma nova senha" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col md-12">
+                                <label for="senha" class="form-label">Confirmar Senha</label>
+                                <input type="password" id="senha" class="form-control" name="senha" placeholder="Digite a nova senha novamente" required />
                             </div>
                         </div>
                     </div>
@@ -267,7 +267,7 @@
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                             Cancelar
                         </button>
-                        <button type="submit" class="btn btn-success">Salvar    </button>
+                        <button type="submit" onclick="return validar()" class="btn btn-success">Salvar </button>
                     </div>
                 </div>
             </div>
@@ -282,9 +282,34 @@
     <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
     <script src="/assets/vendor/js/menu.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+
+    <!-- Validar campos senha -->
+    <script>
+        function validar() {
+            let novaSenha = formsenha.novaSenha.value;
+            let senha = formsenha.senha.value;
+
+            if(novaSenha === '' || novaSenha <= 6)
+            {
+                swal("Atenção!", "A senha precisa ter no minimo 6 caracteres!", "warning");
+            } else if(novaSenha != senha)
+            {
+                swal("Atenção!", "A senhas não são iguais!", "warning");
+            }
+
+            return
+        }
+
+        function sucesso() {
+            swal("Sucesso!", "Sua senha foi alterada!", "success");
+        }
+    </script>
+    <!-- Fim validação -->
 
     <!-- Main JS -->
     <script src="/assets/js/main.js"></script>
