@@ -32,4 +32,20 @@ class ProfileController extends Action
             header('Location: /?login=erro');
         }
     }
+
+    public function store()
+    {
+
+    }
+
+    public function show()
+    {
+        session_start();
+        if ($_SESSION['id'] != '') 
+        {
+            
+        } else {
+            header('Location: /?login=erro');
+        }
+    }
 }
