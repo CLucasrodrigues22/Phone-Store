@@ -112,7 +112,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="" class="menu-link" target="_blank">
+                                <a href="" class="menu-link" target="_blank" data-bs-toggle="modal" data-bs-target="#alterSenha">
                                     <div data-i18n="Basic">Esqueci minha senha</div>
                                 </a>
                             </li>
@@ -171,7 +171,7 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="/showuser?id=<?php echo $_SESSION['id'] ?>">
                                             <i class="bx bx-user me-2"></i>
                                             <span class="align-middle">Meu Perfil</span>
                                         </a>
@@ -198,49 +198,82 @@
                     </div>
                 </nav>
 
-            <div class="content-wrapper">
+                <div class="content-wrapper">
 
-            
-                <?= $this->content() ?>
 
-                <!-- Footer -->
-                <section id="component-footer">
-                    <footer class="footer bg-light">
-                    <div
-                        class="container-fluid d-flex flex-md-row flex-column justify-content-between align-items-md-center gap-1 container-p-x py-3"
-                    >
-                        <div>
-                        <a
-                            href="#"    
-                            class="footer-text fw-bolder"
-                            >Phone Store </a
-                        >
-                        © <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                        </div>
-                        <div>
-                        <a href="/logout" class="btn btn-sm btn-outline-danger"
-                            ><i class="bx bx-log-out-circle"></i> Finalizar Sessão</a
-                        >
-                        </div>
-                    </div>
-                    </footer>
-                </section>
-                <!-- / Footer -->
+                    <?= $this->content() ?>
 
-                <div class="content-backdrop fade"></div>
+                    <!-- Footer -->
+                    <section id="component-footer">
+                        <footer class="footer bg-light">
+                            <div class="container-fluid d-flex flex-md-row flex-column justify-content-between align-items-md-center gap-1 container-p-x py-3">
+                                <div>
+                                    <a href="#" class="footer-text fw-bolder">Phone Store </a>
+                                    © <script>
+                                        document.write(new Date().getFullYear());
+                                    </script>
+                                </div>
+                                <div>
+                                    <a href="/logout" class="btn btn-sm btn-outline-danger"><i class="bx bx-log-out-circle"></i> Finalizar Sessão</a>
+                                </div>
+                            </div>
+                        </footer>
+                    </section>
+                    <!-- / Footer -->
+
+                    <div class="content-backdrop fade"></div>
+                </div>
+                <!-- Content wrapper -->
             </div>
-            <!-- Content wrapper -->
+            <!-- / Layout page -->
         </div>
-        <!-- / Layout page -->
-    </div>
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
 
+    <!-- Modal alterar senha -->
+    <div class="modal fade" id="alterSenha" tabindex="-1" aria-hidden="true">
+        <form action="/updatepassword" method="POST">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Alterar Senha</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['id'] ?>">
+                        <div class="row mb-3">
+                            <div class="col md-12">
+                                <label for="senhaAtual" class="form-label">Senha Atual</label>
+                                <input type="password" id="senhaAtual" class="form-control" name="senhaAtual" placeholder="Digite a senha atual" />
+                            </div>   
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col md-12">
+                                <label for="novaSenha" class="form-label">Nova Senha</label>
+                                <input type="password" id="novaSenha" class="form-control" placeholder="Digite uma nova senha" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col md-12">
+                                <label for="verificarSenha" class="form-label">Confirmar Senha</label>
+                                <input type="password" id="verificarSenha" class="form-control" name="senha" placeholder="Digite a nova senha novamente" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success">Salvar    </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Fim modal -->
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="/assets/vendor/libs/jquery/jquery.js"></script>

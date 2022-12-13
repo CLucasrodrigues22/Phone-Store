@@ -244,4 +244,35 @@ class UsersController extends Action
             header('Location: /?login=erro');
         }
     }
+
+    // Alter Password user SESSION
+    public function updatePassword()
+    {
+        echo '<pre>';
+        print_r($_POST);
+        // Intanciando Model de usuários
+        $user = Container::getModel('users');
+        // Resgatando ID do usuário da sessão
+        $id = $_POST['id'];
+        // Resgatando senha atual
+        $senhaAtual = $_POST['senhaAtual'];
+        // Nova senha
+        $novaSenha = $_POST['senha'];
+        // Enviando ID e resgatando dados do usuário relacinado
+        $userData = $user->show($id);
+
+        if(is_array($userData))
+        {
+            if(password_verify($senhaAtual, $userData['senha']))
+            {
+                $user->__set('senha', password_hash($novaSenha, PASSWORD_BCRYPT));
+                $user->alterPassword($id);
+                echo 'ok';
+            } else 
+            {
+                echo 'senha errada';
+            }
+        }
+
+    }
 }

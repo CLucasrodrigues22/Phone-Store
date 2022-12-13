@@ -80,6 +80,13 @@ class Route extends Bootstrap {
                 'controller' => 'UsersController',
                 'action' => 'delete'
             );
+
+            // Alterar senha do usuário
+            $routes['updatepassword'] = array (
+                'route' => '/updatepassword',
+                'controller' => 'UsersController',
+                'action' => 'updatePassword'
+            );
             
             // Lista de todos os tipos de perfis 
             $routes['listprofiles'] = array (

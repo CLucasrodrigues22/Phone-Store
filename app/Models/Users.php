@@ -81,4 +81,14 @@ class Users extends Model {
         $stmt = $this->db->prepare($q);
         $stmt->execute();
     }
+
+    public function alterPassword($id)
+    {
+        $q = "update users set senha = :senha where id = $id";
+        $stmt = $this->db->prepare($q);
+        $stmt->bindValue(':senha', $this->__get('senha'));
+        $stmt->execute();
+
+        return $this;
+    }
 }
