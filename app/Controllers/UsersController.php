@@ -248,31 +248,29 @@ class UsersController extends Action
     // Alter Password user SESSION
     public function updatePassword()
     {
-        echo '<pre>';
-        print_r($_POST);
-        // Intanciando Model de usuários
-        $user = Container::getModel('users');
-        // Resgatando ID do usuário da sessão
-        $id = $_POST['id'];
-        // Resgatando senha atual
-        $senhaAtual = $_POST['senhaAtual'];
-        // Nova senha
-        $novaSenha = $_POST['senha'];
-        // Enviando ID e resgatando dados do usuário relacinado
-        $userData = $user->show($id);
-
-        if(is_array($userData))
+        session_start();
+        if ($_SESSION['id'] != '') 
         {
-            if(password_verify($senhaAtual, $userData['senha']))
-            {
-                $user->__set('senha', password_hash($novaSenha, PASSWORD_BCRYPT));
-                $user->alterPassword($id);
-                echo 'ok';
-            } else 
-            {
-                echo 'senha errada';
-            }
+            // Intanciando Model de usuários
+            $user = Container::getModel('users');
+            // Resgatando ID do usuário da sessão
+            $id = $_POST['id'];
+            // Nova senha
+            $confirmaSenha = $_POST['senha'];
+
+            $user->__set('senha', password_hash($confirmaSenha, PASSWORD_BCRYPT));
+            $user->alterPassword($id);
+            
+            $feedback = 'pwdsuccess';
+
+            header("Location: /home?feedback=$feedback");
+            exit;
+        } else
+        {
+            header('Location: /listusers');
         }
+
+
 
     }
 }
