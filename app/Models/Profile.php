@@ -32,10 +32,17 @@ class Profile extends Model
         return $this;
     }
 
-    // Recuperar todos os usuários
+    // Recuperar todos os perfis
     public function showAll() 
     {
-        $q = "select id, profileName from profiles";
+        $q = "select * from profiles";
         return $this->db->query($q)->fetchAll();
+    }
+
+    // Recupera dados pelo ID
+    public function show($id)
+    {
+        $q = "select * from profiles where id = $id";
+        return $this->db->query($q)->fetch();
     }
 }

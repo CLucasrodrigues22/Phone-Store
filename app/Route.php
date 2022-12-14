@@ -32,6 +32,7 @@ class Route extends Bootstrap {
             );
 
         // Rota privadas da aplicação
+            // ------------------------- Usuário -------------------------
             // Rota de incio
             $routes['home'] = array (
                 'route' => '/home',
@@ -88,6 +89,8 @@ class Route extends Bootstrap {
                 'action' => 'updatePassword'
             );
             
+            // ------------------------- Perfis -------------------------
+
             // Lista de todos os tipos de perfis 
             $routes['listprofiles'] = array (
                 'route' => '/listprofiles',
@@ -107,6 +110,13 @@ class Route extends Bootstrap {
                 'route' => '/storeprofile',
                 'controller' => 'ProfileController',
                 'action' => 'store'
+            );
+
+            // Mostrar dados do perfil por ID
+            $routes['showprofile'] = array (
+                'route' => '/showprofile',
+                'controller' => 'ProfileController',
+                'action' => 'show'
             );
 
         $this->setRoutes($routes);

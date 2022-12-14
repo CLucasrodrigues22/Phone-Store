@@ -20,9 +20,6 @@ class UsersController extends Action
             $users = Container::getModel('Users');
 
             $this->view->dados = $users->showAll();
-            // echo '<pre>';
-            // print_r($users->showAll());
-            // die();
 
             $this->view('users/index', 'header');
         } else {

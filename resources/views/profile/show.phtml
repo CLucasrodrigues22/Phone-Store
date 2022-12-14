@@ -1,0 +1,44 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Formulário /</span> Dados do Perfil</h4>
+    <form action="">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card mb-4">
+                    <h5 class="card-header">Dados e permissões</h5>
+                    <!-- Checkboxes and Radios -->
+                    <div class="card-body">
+                        <div class="row gy-3">
+                            <div class="col-md">
+                                <label for="profileName" class="form-label">Nível de permissão</label>
+                                <input class="form-control" type="text" id="profileName" name="profileName" value="<?= $this->view->dados['profileName'] ?>" autofocus />
+                            </div>
+                            <div class="col-md">
+                                <small class="text-black fw-bold">Permissões</small>
+                                <div class="form-check mt-3">
+                                    <input class="form-check-input" type="checkbox" name="show" value="" id="defaultCheck1" />
+                                    <label class="form-check-label" for="defaultCheck1"> Vizualizar </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="select" value="" id="defaultCheck2" />
+                                    <label class="form-check-label" for="defaultCheck2"> Selecionar </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="insert" value="" id="defaultCheck3" />
+                                    <label class="form-check-label" for="defaultCheck3"> Inserir </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="update" value="" id="disabledCheck1" />
+                                    <label class="form-check-label" for="disabledCheck1"> Atualizar </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="delete" value="" id="disabledCheck1" />
+                                    <label class="form-check-label" for="disabledCheck1"> Deletar </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
