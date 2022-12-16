@@ -17,9 +17,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="largeSelect" class="form-label">Perfil *</label>
-                            <select id="largeSelect" class="form-select form-select-lg" name="profile_id">
+                            <select id="largeSelect" class="form-select" name="profile_id">
                                 <option class="text-muted" selected>Selecione</option>
-                                <option value="1">Administrador</option>
+                                <?php foreach($this->view->dados as $indice => $profile) { ?>
+                                <option value="<?= $profile['id'] ?>"><?= $profile['profileName'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class="mb-3">

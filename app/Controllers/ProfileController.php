@@ -39,7 +39,31 @@ class ProfileController extends Action
 
     public function store()
     {
+        session_start();
+        if ($_SESSION['id'] != '') 
+        {
+            try {
+                $profile = Container::getModel('profile');
+            
+                $profile->__set('profileName', $_POST['profileName']);
+                $profile->__set('status', $_POST['status']);
+                $profile->__set('vizualizar', $_POST['vizualizar']);
+                $profile->__set('atualizar', $_POST['atualizar']);
+                $profile->__set('cadastrar', $_POST['cadastrar']);
+                $profile->__set('deletar', $_POST['deletar']);
+                
+                $profile->store();
 
+                $feedback = 'profilesuccess';
+                header("Location: /listprofiles?feedback=$feedback");
+                exit;
+            } catch (\PDOException $e) {
+                echo 'erro'.$e;
+            }
+        } else
+        {
+            header('Location: /?login=erro');
+        }
     }
 
     public function show()
@@ -58,4 +82,62 @@ class ProfileController extends Action
             header('Location: /?login=erro');
         }
     }
+
+    public function update()
+    {
+        session_start();
+        if ($_SESSION['id'] != '') 
+        {
+            try {
+                // instanciando Model
+                $profile = Container::getModel('profile');
+                // Atribuindo valores do POST nos atributos do Model
+                $profile->__set('id', $_POST['id']);
+                $profile->__set('profileName', $_POST['profileName']);
+                $profile->__set('status', $_POST['status']);
+                $profile->__set('vizualizar', $_POST['vizualizar']);
+                $profile->__set('cadastrar', $_POST['cadastrar']);
+                $profile->__set('atualizar', $_POST['atualizar']);
+                $profile->__set('deletar', $_POST['deletar']);
+                // Executando método para atualizar
+                $profile->update();
+
+                $feedback = 'updatesuccess';
+                header("Location: /listprofiles?feedback=$feedback");
+                exit;
+            } catch (\PDOException $e) {
+                echo 'erro'.$e;
+            }
+        } else
+        {
+            header('Location: /?login=erro');
+        }
+    }
+
+    public function delete()
+    {
+        session_start();
+        if ($_SESSION['id'] != '') 
+        {
+            try {
+                $profile = Container::getModel('profile');
+                $id = $_GET['id'];
+                $profile->destroy($id);
+        
+                $feedback = 'deletesuccess';
+                header("Location: /listprofiles?feedback=$feedback");
+                exit;
+            } catch (\PDOException $e) {
+                if($e->errorInfo[1]) {
+                    $erro = $e->errorInfo[1];
+                    $feedback = 'deleteerror';
+                    header("Location: /listprofiles?id=$id&feedback=$feedback&error=$erro");
+                }
+            }
+        } else
+        {
+
+        }
+    }
+
 }

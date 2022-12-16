@@ -119,6 +119,20 @@ class Route extends Bootstrap {
                 'action' => 'show'
             );
 
+            // Atualização de perfil
+            $routes['updateprofile'] = array (
+                'route' => '/updateprofile',
+                'controller' => 'ProfileController',
+                'action' => 'update'
+            );
+
+            // Deletar perfil do banco
+            $routes['deleteprofile'] = array (
+                'route' => '/deleteprofile',
+                'controller' => 'ProfileController',
+                'action' => 'delete'
+            );
+
         $this->setRoutes($routes);
     }
 }

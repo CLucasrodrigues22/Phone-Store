@@ -32,6 +32,8 @@ class UsersController extends Action
     {
         session_start();
         if ($_SESSION['id'] != '') {
+            $profiles = Container::getModel('profile');
+            $this->view->dados = $profiles->showAll();
             $this->view('users/create', 'header');
         } else {
             header('Location: /?login=erro');

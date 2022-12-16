@@ -61,6 +61,7 @@ class Users extends Model {
         return $this->db->query($q)->fetch();
     }
 
+    // Atualizar usuário pelo ID
     public function update($id)
     {
         $q = "update users set profile_id = :profile_id, fullname = :fullname, email = :email, senha = :senha, photo = :photo where id = $id";
@@ -75,6 +76,7 @@ class Users extends Model {
         return $this;
     }
 
+    // Deletar usuário do banco
     public function delete($id) 
     {
         $q = "delete from users where id = $id";
@@ -82,6 +84,7 @@ class Users extends Model {
         $stmt->execute();
     }
 
+    // Alterar senha do usuário logado
     public function alterPassword($id)
     {
         $q = "update users set senha = :senha where id = $id";

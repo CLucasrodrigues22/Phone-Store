@@ -1,44 +1,52 @@
+<?php
+  if($_GET['feedback'] === 'deleteerror')
+  {
+      echo '<script>
+              swal("Erro!", "O perfil não pode ser excluído, pois está atribuído a um dos usuários do sistema!", "error");
+            </script>';
+  } elseif($_GET['feedback'] === 'deletesuccess')
+  {
+    echo '<script>
+            swal("Sucesso!", "O perfil foi excuído com sucesso!", "success");
+          </script>';
+  }
+?>
 <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tabela/</span> Lista de Perfis</h4>
-
-              <!-- Basic Bootstrap Table -->
-              <div class="card text-center">
-                <h5 class="card-header">Todos os perfis</h5>
-                <div class="table-responsive text-nowrap">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Nível</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                        <?php foreach($this->view->dados as $indice => $profile) { ?>
-                            <tr>
-                                <td><strong><?= $profile['profileName'] ?></strong></td>
-                                </td>
-                                <td><?= $profile['status'] === 1 ? '<span class="badge bg-label-success me-1">Ativo</span>' : '<span class="badge bg-label-danger me-1">Inativo</span>' ?></td>
-                                <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/showprofile?id=<?= $profile['id'] ?>"
-                                        ><i class="bx bx-edit-alt me-1"></i> Editar</a
-                                    >
-                                    <a class="dropdown-item" href="/deleteprofile?id=<?= $profile['id'] ?>"
-                                        ><i class="bx bx-trash me-1"></i> Deletar</a
-                                    >
-                                    </div>
-                                </div>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                  </table>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tabela/</span> Lista de Perfis</h4>
+  <!-- Basic Bootstrap Table -->
+  <div class="card text-center">
+    <h5 class="card-header">Todos os perfis</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nível</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <?php foreach ($this->view->dados as $indice => $profile) { ?>
+            <tr>
+              <td><strong><?= $profile['profileName'] ?></strong></td>
+              </td>
+              <td><?= $profile['status'] == 1 ? '<span class="badge bg-label-success me-1">Ativo</span>' : '<span class="badge bg-label-danger me-1">Inativo</span>' ?></td>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/showprofile?id=<?= $profile['id'] ?>"><i class="bx bx-edit-alt me-1"></i> Editar</a>
+                    <a class="dropdown-item" href="/deleteprofile?id=<?= $profile['id'] ?>"><i class="bx bx-trash me-1"></i> Deletar</a>
+                  </div>
                 </div>
-              </div>
-              <!--/ Basic Bootstrap Table -->
-            </div>
+              </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--/ Basic Bootstrap Table -->
+</div>
