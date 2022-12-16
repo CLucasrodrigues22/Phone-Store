@@ -54,11 +54,15 @@ class ProfileController extends Action
                 
                 $profile->store();
 
-                $feedback = 'profilesuccess';
+                $feedback = 'createsuccess';
                 header("Location: /listprofiles?feedback=$feedback");
                 exit;
             } catch (\PDOException $e) {
-                echo 'erro'.$e;
+                if($e->errorInfo[1]) {
+                    $erro = $e->errorInfo[1];
+                    $feedback = 'createerror';
+                    header("Location: /listprofiles?feedback=$feedback&error=$erro");
+                }
             }
         } else
         {
@@ -106,7 +110,12 @@ class ProfileController extends Action
                 header("Location: /listprofiles?feedback=$feedback");
                 exit;
             } catch (\PDOException $e) {
-                echo 'erro'.$e;
+                if($e->errorInfo[1]) {
+                    $erro = $e->errorInfo[1];
+                    $id = $_POST['id'];
+                    $feedback = 'updateerror';
+                    header("Location: /showuser?id=$id&feedback=$feedback&error=$erro");
+                }
             }
         } else
         {

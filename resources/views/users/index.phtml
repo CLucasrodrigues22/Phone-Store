@@ -1,3 +1,36 @@
+<?php
+  if($_GET['feedback'] === 'deleteerror')
+  {
+    echo '<script>
+            swal("Erro!", "Erro ao excluir usuário do banco de dados!", "error");
+          </script>';
+  } elseif($_GET['feedback'] === 'deletesuccess')
+  {
+    echo '<script>
+            swal("Sucesso!", "Os dados do usuário foi excuído com sucesso!", "success");
+          </script>';
+  } elseif($_GET['feedback'] === 'updatesuccess')
+  {
+    echo '<script>
+            swal("Sucesso!", "Os dados do usuário foi editado com sucesso!", "success");
+          </script>';
+  } elseif($_GET['feedback'] === 'updateerror')
+  {
+    echo '<script>
+            swal("Erro!", "Erro ao atualizar dados do usuário!", "error");
+          </script>';
+  } elseif($_GET['feedback'] === 'createsuccess')
+  {
+    echo '<script>
+            swal("Sucesso!", "Usuário criado com sucesso!", "success");
+          </script>';
+  } elseif($_GET['feedback'] === 'createerror')
+  {
+    echo '<script>
+            swal("Erro!", "Erro ao criar usuários!", "error");
+          </script>';
+  }
+?>
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tabela/</span> Lista de usuários</h4>
 

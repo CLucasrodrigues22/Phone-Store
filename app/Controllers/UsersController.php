@@ -94,15 +94,14 @@ class UsersController extends Action
                 $userData->create();
 
                 $feedback = 'createsuccess';
-
                 header("Location: /listusers?feedback=$feedback");
                 exit;
             } catch (\PDOException $e) {
-                //echo 'Erro, Banco de dados instavel'.' - '.$e;
-                $feedback = 'createerror';
-
-                header("Location: /createusers?feedback=$feedback");
-                exit;
+                if($e->errorInfo[1]) {
+                    $erro = $e->errorInfo[1];
+                    $feedback = 'createerror';
+                    header("Location: /listusers?feedback=$feedback&error=$erro");
+                }
             }
         } else {
             header('Location: /?login=erro');
@@ -195,10 +194,11 @@ class UsersController extends Action
                 header("Location: /listusers?feedback=$feedback");
                 exit;
             } catch (\PDOException $e) {
-                $feedback = 'updateerror';
-
-                header("Location: /listusers?feedback=$feedback");
-                exit;
+                if($e->errorInfo[1]) {
+                    $erro = $e->errorInfo[1];
+                    $feedback = 'updateerror';
+                    header("Location: /showuser?id=$id&feedback=$feedback&error=$erro");
+                }
             }
         } else {
             header('Location: /?login=erro');
@@ -234,10 +234,11 @@ class UsersController extends Action
                 header("Location: /listusers?feedback=$feedback");
                 exit;
             } catch (\PDOException $e) {
-                $feedback = 'deleteerror' . $e;
-
-                header("Location: /listusers?feedback=$feedback");
-                exit;
+                if($e->errorInfo[1]) {
+                    $erro = $e->errorInfo[1];
+                    $feedback = 'deleteerror';
+                    header("Location: /listprofiles?id=$id&feedback=$feedback&error=$erro");
+                }
             }
         } else {
             header('Location: /?login=erro');

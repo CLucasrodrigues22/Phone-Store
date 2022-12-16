@@ -1,16 +1,38 @@
+<!-- Alertas de feedback -->
 <?php
   if($_GET['feedback'] === 'deleteerror')
   {
-      echo '<script>
-              swal("Erro!", "O perfil não pode ser excluído, pois está atribuído a um dos usuários do sistema!", "error");
-            </script>';
+    echo '<script>
+            swal("Erro!", "O perfil não pode ser excluído, pois está atribuído a um dos usuários do sistema!", "error");
+          </script>';
   } elseif($_GET['feedback'] === 'deletesuccess')
   {
     echo '<script>
             swal("Sucesso!", "O perfil foi excuído com sucesso!", "success");
           </script>';
+  } elseif($_GET['feedback'] === 'updatesuccess')
+  {
+    echo '<script>
+            swal("Sucesso!", "O perfil foi editado com sucesso!", "success");
+          </script>';
+  } elseif($_GET['feedback'] === 'updateerror')
+  {
+    echo '<script>
+            swal("Erro!", "Erro ao atualizar dados do perfil!", "error");
+          </script>';
+  } elseif($_GET['feedback'] === 'createsuccess')
+  {
+    echo '<script>
+            swal("Sucesso!", "Perfil criado com sucesso!", "success");
+          </script>';
+  } elseif($_GET['feedback'] === 'createerror')
+  {
+    echo '<script>
+            swal("Erro!", "Erro ao criar perfil!", "error");
+          </script>';
   }
 ?>
+
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tabela/</span> Lista de Perfis</h4>
   <!-- Basic Bootstrap Table -->
