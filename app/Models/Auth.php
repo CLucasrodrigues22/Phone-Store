@@ -24,7 +24,25 @@ class Auth extends Model
     // User Validate
     public function validateUser()
     {
-        $q = "select * from users where email = :email";
+        //$q = "select * from users where email = :email";
+        $q = "SELECT
+                U.id,
+                U.fullname,
+                U.email,
+                U.senha,
+                U.photo,
+                P.status,
+                P.vizualizar,
+                P.atualizar,
+                P.cadastrar,
+                P.deletar,
+                P.profileName AS profiles
+                FROM
+                users U
+                INNER JOIN profiles P ON U.profile_id = P.id
+                WHERE
+                U.email = :email";
+        
         $stmt = $this->db->prepare($q);
         $stmt->bindParam(':email', $this->__get('email'));
         $stmt->setFetchMode(\PDO::FETCH_ASSOC);
