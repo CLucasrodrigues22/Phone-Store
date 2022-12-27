@@ -56,27 +56,38 @@ class ProductController extends Action
                 for($i = 0; $i < $imagens; $i++)
                 {
                     // diretório para armazenar imagens
-                    $diretorio = 'storege/products/smartphones/';
+                    $diretorio = 'storage/products/smartphones/';
+                    // Extensões permitidas
                     $extensoes['extensoes'] = ['jpg', 'png'];
-                    
-                    $nome = explode('.', $_FILES['photo']['name'][$i]);
-
-                    $extensao = strtolower(end($nome));
+                    // Extensão de cada imagem do array
+                    $nomeEextensao = explode('.', $_FILES['photo']['name'][$i]);
+                    // Extensão de cada imagem
+                    $extensao = strtolower(end($nomeEextensao));
+                    // Nome da imagem para ser armazenada no bd
+                    $nomeImg = md5($nomeEextensao[0]).date('YmdHmi').'.'.$extensao;
                     if(array_search($extensao, $extensoes['extensoes']) === false)
                     {
                         $feedback = 'errorextension';
                         header("Location: /createproduct?feedback=$feedback");
                         exit;
                     }
-                       
+
+                    // Mover imagens para diretório
+                    if(move_uploaded_file($_FILES['photo']['tmp_name'][$i], $diretorio . $nomeImg))
+                    {
+                        echo 'img salva';
+                    } else 
+                    {
+                        echo 'erro';
+                    }
+
                 }
             } else
             {
-
+                
             } 
             
-
-            print_r($_FILES);
+            print_r($nomeImg);  
 
             die;
             // Salvando demais atributos
