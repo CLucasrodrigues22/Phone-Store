@@ -1,0 +1,125 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Formulário /</span> Cadastro de Produto</h4>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card mb-4">
+                <h5 class="card-header">Qual tipo de produto deseja cadastrar?</h5>
+                <div class="card h-100">
+                    <div class="card-header justify-content-center">
+                        <ul class="nav nav-pills mb-3 justify-content-center" role="tablist">
+                            <li class="nav-item">
+                                <a href="#smartphone" class="btn btn-dark m-1 active" role="tab" data-bs-toggle="tab" aria-controls="smartphone" aria-selected="true">
+                                    Smartphone
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#notebook" class="btn btn-dark m-1" role="tab" data-bs-toggle="tab" aria-controls="notebook" aria-selected="false">
+                                    Notebook
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body nav-align-top mb-4">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="smartphone" role="tabpanel">
+                                <h4 class="d-flex justify-content-center">Novo Smartphone</h4>
+                                <form action="/storeproduct?p=newsmartphone" method="post" enctype="multipart/form-data">
+                                    <div class="d-flex align-items-start align-items-sm-center gap-4" style="margin: 2%;">
+                                        <img src="../assets/img/elements/13.jpg" alt="user-avatar " class="d-block rounded" height="100" width="100" id="uploadedAvatar">
+                                        <div class="button-wrapper">
+                                        <small class="text-muted">Limite: 5 Imagens (1)</small><br>
+                                            <label for="upload" class="btn btn-info me-2 mb-4" tabindex="0">
+                                                <span class="d-none d-sm-block">Adicionar Imagens </span>
+                                                <i class="bx bx-upload d-block d-sm-none"></i>
+                                                <input type="file" id="upload" class="account-file-input" hidden="" name="photo[]" multiple accept="image/png, image/jpg">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row gy-3">
+                                        <div class="col-md">
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="marca"> Marca </label>
+                                                <input class="form-control" type="text" id="marca" name="marca" placeholder="Ex: Apple">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="modelo"> Modelo </label>
+                                                <input class="form-control" type="text" id="modelo" name="modelo" placeholder="Ex: Iphone 12 Pro Max">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="sistema "> Sistema Operacional </label>
+                                                <input class="form-control" type="text" id="sistema " name="sistema" placeholder="Ex: IOS 16">
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="camera"> Câmera </label>
+                                                <input class="form-control" type="text" id="camera" name="camera" placeholder="Ex: 48MP">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="memoria"> Armazenamento </label>
+                                                <input class="form-control" type="text" id="memoria" name="memoria" placeholder="Ex: 128GB">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="ram"> Memória RAM </label>
+                                                <input class="form-control" type="text" id="ram" name="ram" placeholder="Ex: 6GB RAM">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center pt-4 gap-2">
+                                        <div>
+                                            <button type="submit" class="btn btn-success">Salvar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="notebook" role="tabpanel">
+                                <h4 class="d-flex justify-content-center">Novo Notebook</h4>
+                                <form action="/storeproduct?p=newnotebook" method="post">
+                                    <div class="row gy-3">
+                                        <div class="col-md">
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="marca"> Marca </label>
+                                                <input class="form-control" type="text" id="marca" name="marca" placeholder="Ex: Dell">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="modelo"> Modelo </label>
+                                                <input class="form-control" type="text" id="modelo" name="modelo" placeholder="Ex: inspiron i5">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="cpu"> Processador </label>
+                                                <input class="form-control" type="text" id="cpu" name="cpu" placeholder="Ex: Intel I5-9900">
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="ram"> Memória RAM </label>
+                                                <input class="form-control" type="text" id="ram" name="ram" placeholder="Ex: 16GB DDR4 2666mhz">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="gpu"> GPU (Placa de Video) </label>
+                                                <input class="form-control" type="text" id="gpu" name="gpu" placeholder="Ex: RTX 2060 6GB">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="tela"> Tela </label>
+                                                <input class="form-control" type="text" id="tela" name="tela" placeholder="Ex: 19.5 polegadas">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="armazenamento"> Armazenamento </label>
+                                                <input class="form-control" type="text" id="armazenamento" name="armazenamento" placeholder="Ex: SSD 250gb">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center pt-4 gap-2">
+                                        <div>
+                                            <button type="submit" class="btn btn-success">Salvar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

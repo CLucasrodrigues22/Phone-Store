@@ -133,6 +133,28 @@ class Route extends Bootstrap {
                 'action' => 'delete'
             );
 
+            // ------------------------- Produtos -------------------------
+
+            //Todos os produtos
+            $routes['listproducts'] = array(
+                'route' => '/listproducts',
+                'controller' => 'ProductController',
+                'action' => 'index'
+            );
+
+            //Formulário de produtos
+            $routes['createproduct'] = array(
+                'route' => '/createproduct',
+                'controller' => 'ProductController',
+                'action' => 'create'
+            );
+
+            $routes['storeproduct'] = array(
+                'route' => '/storeproduct',
+                'controller' => 'ProductController',
+                'action' => 'store'
+            );
+            
         $this->setRoutes($routes);
     }
 }
