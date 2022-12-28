@@ -154,12 +154,6 @@ class Route extends Bootstrap {
                 'controller' => 'ProductController',
                 'action' => 'store'
             );
-
-            $routes['storeproductimg'] = array(
-                'route' => '/storeproductimg',
-                'controller' => 'ProductController',
-                'action' => 'storeImg'
-            );
             
         $this->setRoutes($routes);
     }

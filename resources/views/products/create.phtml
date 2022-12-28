@@ -23,63 +23,45 @@
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="smartphone" role="tabpanel">
                                 <h4 class="d-flex justify-content-center">Novo Smartphone</h4>
-                                <?php if ($this->view->newsmartphone != '') : ?>
-                                    <form class="mb-5" action="/storeproductimg?action=newimgsmartphone" method="post" enctype="multipart/form-data" style="padding-left: 30%; padding-right: 30%;">
-                                        <div class="col-md-12 col-lg-12 align-items-start align-items-sm-center gap-4">
-                                            <input type="hidden" name="id" value="<?= $this->view->newsmartphone['id'] ?>">
-                                            <div id="rep" class="carousel slide" data-bs-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <?php foreach ($this->view->imgSmartphones as $key => $photo) { ?>
-                                                        <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>">
-                                                            <img class="d-block w-100" src="<?= $this->view->imgSmartphones['path'].$this->view->imgSmartphones['nome'] ?>">
-                                                        </div>
-                                                    <?php } ?>
-                                                </div>
-                                                <a class="carousel-control-prev" href="#rep" role="button" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Anterior</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#rep" role="button" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Próximo</span>
-                                                </a>
-                                                <div class="input-group pt-3">
-                                                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="photo[]" aria-label="Upload" multiple>
-                                                    <button class="btn btn-success" type="submit" id="inputGroupFileAddon04">Salvar</button>
-                                                </div>
-                                            </div>
+                                <form action="/storeproduct?p=newsmartphone" method="post" enctype="multipart/form-data">
+                                    <div class="d-flex align-items-start align-items-sm-center gap-4" style="margin: 2%;">
+                                        <img src="../assets/img/elements/13.jpg" alt="user-avatar " class="d-block rounded" height="100" width="100" id="uploadedAvatar">
+                                        <div class="button-wrapper">
+                                        <small class="text-muted">Limite: 5 Imagens</small><br>
+                                            <label for="upload" class="btn btn-info me-2 mb-4" tabindex="0">
+                                                <span class="d-none d-sm-block">Adicionar Imagens </span>
+                                                <i class="bx bx-upload d-block d-sm-none"></i>
+                                                <input type="file" id="upload" class="account-file-input" hidden="" name="photo[]" multiple accept="image/png, image/jpg">
+                                            </label>
                                         </div>
-                                    </form>
-                                <?php endif; ?>
-                                <form action="/storeproduct?p=newsmartphone" method="post">
+                                    </div>
                                     <div class="row gy-3">
                                         <div class="col-md">
-                                            <input class="form-control" type="hidden" id="id" name="id" value="<?= $this->view->newsmartphone != '' ? $this->view->newsmartphone['id'] : '' ?>">
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="marca"> Marca </label>
-                                                <input class="form-control" type="text" id="marca" name="marca" value="<?= $this->view->newsmartphone != '' ? $this->view->newsmartphone['marca'] : '' ?>" placeholder="Ex: Apple">
+                                                <input class="form-control" type="text" id="marca" name="marca" placeholder="Ex: Apple">
                                             </div>
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="modelo"> Modelo </label>
-                                                <input class="form-control" type="text" id="modelo" name="modelo" value="<?= $this->view->newsmartphone != '' ? $this->view->newsmartphone['modelo'] : '' ?>" placeholder="Ex: Iphone 12 Pro Max">
+                                                <input class="form-control" type="text" id="modelo" name="modelo" placeholder="Ex: Iphone 12 Pro Max">
                                             </div>
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="sistema "> Sistema Operacional </label>
-                                                <input class="form-control" type="text" id="sistema " name="sistema" value="<?= $this->view->newsmartphone != '' ? $this->view->newsmartphone['sistema'] : '' ?>" placeholder="Ex: IOS 16">
+                                                <input class="form-control" type="text" id="sistema " name="sistema" placeholder="Ex: IOS 16">
                                             </div>
                                         </div>
                                         <div class="col-md">
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="camera"> Câmera </label>
-                                                <input class="form-control" type="text" id="camera" name="camera" value="<?= $this->view->newsmartphone != '' ? $this->view->newsmartphone['camera'] : '' ?>" placeholder="Ex: 48MP">
+                                                <input class="form-control" type="text" id="camera" name="camera" placeholder="Ex: 48MP">
                                             </div>
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="memoria"> Armazenamento </label>
-                                                <input class="form-control" type="text" id="memoria" name="memoria" value="<?= $this->view->newsmartphone != '' ? $this->view->newsmartphone['memoria'] : '' ?>" placeholder="Ex: 128GB">
+                                                <input class="form-control" type="text" id="memoria" name="memoria" placeholder="Ex: 128GB">
                                             </div>
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="ram"> Memória RAM </label>
-                                                <input class="form-control" type="text" id="ram" name="ram" value="<?= $this->view->newsmartphone != '' ? $this->view->newsmartphone['ram'] : '' ?>" placeholder="Ex: 6GB RAM">
+                                                <input class="form-control" type="text" id="ram" name="ram" placeholder="Ex: 6GB RAM">
                                             </div>
                                         </div>
                                     </div>
