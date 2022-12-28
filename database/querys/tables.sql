@@ -34,12 +34,7 @@ create table smartphones (
     `sistema` varchar(50) not null,
     `camera` varchar(20) not null,
     `memoria` varchar(20) not null,
-    `ram` varchar(20) not null,
-    `photo0` varchar(100),
-    `photo1` varchar(100),
-    `photo2` varchar(100),
-    `photo3` varchar(100),
-    `photo4` varchar(100)
+    `ram` varchar(20) not null
 );
 
 create table notebooks (
@@ -51,10 +46,14 @@ create table notebooks (
     `ram` varchar(50) not null,
     `gpu` varchar(50) not null,
     `tela` varchar(50) not null,
-    `armazenamento` varchar(50) not null,
-    `photo0` varchar(100),
-    `photo1` varchar(100),
-    `photo2` varchar(100),
-    `photo3` varchar(100),
-    `photo4` varchar(100)
+    `armazenamento` varchar(50) not null
+);
+
+create table imagensProducts (
+    `id` int not null primary key AUTO_INCREMENT,
+    `nome` varchar(100),
+    `path` varchar(300),
+    `smartphone_id` int,
+    FOREIGN KEY (smartphone_id)
+        REFERENCES smartphones(id)
 );
