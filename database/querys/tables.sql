@@ -35,11 +35,11 @@ create table smartphones (
     `camera` varchar(20) not null,
     `memoria` varchar(20) not null,
     `ram` varchar(20) not null,
+    `photo0` varchar(100),
     `photo1` varchar(100),
     `photo2` varchar(100),
     `photo3` varchar(100),
-    `photo4` varchar(100),
-    `photo5` varchar(100)
+    `photo4` varchar(100)
 );
 
 create table notebooks (
@@ -52,9 +52,9 @@ create table notebooks (
     `gpu` varchar(50) not null,
     `tela` varchar(50) not null,
     `armazenamento` varchar(50) not null,
+    `photo0` varchar(100),
     `photo1` varchar(100),
     `photo2` varchar(100),
     `photo3` varchar(100),
-    `photo4` varchar(100),
-    `photo5` varchar(100)
+    `photo4` varchar(100)
 );

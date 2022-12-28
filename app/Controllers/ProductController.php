@@ -46,6 +46,9 @@ class ProductController extends Action
 
         if($product == 'newsmartphone')
         {
+            // Instanciando Model Smartphone
+            $smartphone = Container::getModel('Smartphone');
+
             echo '<pre>';
             // Tratando e salvando imagens
 
@@ -64,7 +67,7 @@ class ProductController extends Action
                     // Extensão de cada imagem
                     $extensao = strtolower(end($nomeEextensao));
                     // Nome da imagem para ser armazenada no bd
-                    $nomeImg = md5($nomeEextensao[0]).date('YmdHmi').'.'.$extensao;
+                    $nomeImg = $i.md5($nomeEextensao[0]).date('YmdHmi').'.'.$extensao;
                     if(array_search($extensao, $extensoes['extensoes']) === false)
                     {
                         $feedback = 'errorextension';
@@ -75,23 +78,12 @@ class ProductController extends Action
                     // Mover imagens para diretório
                     if(move_uploaded_file($_FILES['photo']['tmp_name'][$i], $diretorio . $nomeImg))
                     {
-                        echo 'img salva';
-                    } else 
-                    {
-                        echo 'erro';
-                    }
-
+                        $smartphone->__set('photo'.$i, $nomeImg);
+                    } 
                 }
-            } else
-            {
-                
-            } 
+            }
             
-            print_r($nomeImg);  
-
-            die;
             // Salvando demais atributos
-            $smartphone = Container::getModel('Smartphone');
             $smartphone->__set('marca', $_POST['marca']);
             $smartphone->__set('modelo', $_POST['modelo']);
             $smartphone->__set('sistema', $_POST['sistema']);
