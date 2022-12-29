@@ -156,11 +156,18 @@ class Route extends Bootstrap {
                 'action' => 'store'
             );
 
-            // Mosta dados do produto pelo id
+            // Mosta dados do produto pelo id para ser editado
             $routes['editproduct'] = array(
                 'route' => '/editproduct',
                 'controller' => 'ProductController',
                 'action' => 'show'
+            );
+
+            //Salva dados editados
+            $routes['updateproduct'] = array(
+                'route' => '/updateproduct',
+                'controller' => 'ProductController',
+                'action' => 'update'
             );
             
             

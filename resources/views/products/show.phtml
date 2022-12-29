@@ -10,7 +10,7 @@
                     <div class="card-body nav-align-top mb-4">
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="smartphone" role="tabpanel">
-                                <form action="/storeproduct?p=newsmartphone" method="post" enctype="multipart/form-data">
+                                <form action="/updateproduct?p=smartphone&id=<?= $this->view->smartphone['id'] ?>" method="post" enctype="multipart/form-data">
                                     <div class="col-md-12 col-lg-12 align-items-start align-items-sm-center gap-4" style="padding-left: 30%;padding-right: 30%;">
                                         <div id="<?= 'phone' . $this->view->smartphone['id'] ?>" class="carousel slide" data-bs-ride="carousel">
                                             <ol class="carousel-indicators">
@@ -39,36 +39,36 @@
                                             </a>
                                         </div>
                                         <div class="input-group pt-3">
-                                            <input type="file" class="form-control" id="photo" onchange="previewImg()" aria-describedby="inputGroupFileAddon04" name="photo[]" aria-label="Upload" multiple>
+                                            <input type="file" class="form-control" id="photo" name="photo[]" multiple>
                                         </div>
                                     </div>
                                     <div class="row gy-3">
                                         <div class="col-md">
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="marca"> Marca </label>
-                                                <input class="form-control" type="text" id="marca" name="marca" placeholder="Ex: Apple">
+                                                <input class="form-control" type="text" value="<?= $this->view->smartphone['marca'] ?>" id="marca" name="marca" value="<?= $this->view->smartphone['marca'] ?>" placeholder="Ex: Apple">
                                             </div>
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="modelo"> Modelo </label>
-                                                <input class="form-control" type="text" id="modelo" name="modelo" placeholder="Ex: Iphone 12 Pro Max">
+                                                <input class="form-control" type="text" value="<?= $this->view->smartphone['modelo'] ?>" id="modelo" name="modelo" placeholder="Ex: Iphone 12 Pro Max">
                                             </div>
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="sistema "> Sistema Operacional </label>
-                                                <input class="form-control" type="text" id="sistema " name="sistema" placeholder="Ex: IOS 16">
+                                                <input class="form-control" type="text" value="<?= $this->view->smartphone['sistema'] ?>" id="sistema " name="sistema" placeholder="Ex: IOS 16">
                                             </div>
                                         </div>
                                         <div class="col-md">
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="camera"> Câmera </label>
-                                                <input class="form-control" type="text" id="camera" name="camera" placeholder="Ex: 48MP">
+                                                <input class="form-control" type="text" value="<?= $this->view->smartphone['camera'] ?>" id="camera" name="camera" placeholder="Ex: 48MP">
                                             </div>
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="memoria"> Armazenamento </label>
-                                                <input class="form-control" type="text" id="memoria" name="memoria" placeholder="Ex: 128GB">
+                                                <input class="form-control" type="text" value="<?= $this->view->smartphone['memoria'] ?>" id="memoria" name="memoria" placeholder="Ex: 128GB">
                                             </div>
                                             <div class="form-check mt-3">
                                                 <label class="form-control-label" for="ram"> Memória RAM </label>
-                                                <input class="form-control" type="text" id="ram" name="ram" placeholder="Ex: 6GB RAM">
+                                                <input class="form-control" type="text" value="<?= $this->view->smartphone['ram'] ?>" id="ram" name="ram" placeholder="Ex: 6GB RAM">
                                             </div>
                                         </div>
                                     </div>

@@ -62,4 +62,24 @@ class Smartphone extends Model
         return $this;
     }
 
+    public function update($id)
+    {
+        $q = "update smartphones set marca = :marca, modelo = :modelo, sistema = :sistema, camera = :camera, memoria = :memoria, ram = :ram, photo0 = :photo0, photo1 = :photo1, photo2 = :photo2, photo3 = :photo3, photo4 = :photo4 where id = $id";
+        $stmt = $this->db->prepare($q);
+        $stmt->bindValue(':marca', $this->__get('marca'));
+        $stmt->bindValue(':modelo', $this->__get('modelo'));
+        $stmt->bindValue(':sistema', $this->__get('sistema'));
+        $stmt->bindValue(':camera', $this->__get('camera'));
+        $stmt->bindValue(':memoria', $this->__get('memoria'));
+        $stmt->bindValue(':ram', $this->__get('ram'));
+        $stmt->bindValue(':photo0', $this->__get('photo0'));
+        $stmt->bindValue(':photo1', $this->__get('photo1'));
+        $stmt->bindValue(':photo2', $this->__get('photo2'));
+        $stmt->bindValue(':photo3', $this->__get('photo3'));
+        $stmt->bindValue(':photo4', $this->__get('photo4'));
+        $stmt->execute();
+
+        return $this;
+    }
+
 }
