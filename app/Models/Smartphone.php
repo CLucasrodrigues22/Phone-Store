@@ -82,4 +82,10 @@ class Smartphone extends Model
         return $this;
     }
 
+    public function delete($id)
+    {
+        $q = "delete from smartphones where id = $id";
+        $stmt = $this->db->prepare($q);
+        $stmt->execute();
+    }
 }

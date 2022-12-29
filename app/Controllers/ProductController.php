@@ -128,7 +128,6 @@ class ProductController extends Action
         session_start();
         if ($_SESSION['id'] != '') {
             try {
-
                 $product = $_GET['p'];
                 $id = $_GET['id'];
                 if ($product == 'smartphone') {
@@ -140,9 +139,9 @@ class ProductController extends Action
                     if (!empty($_FILES['photo']['size'][0])) {
                         // Recuperando imagens antigas
                         $photoOld = $smartphone->show($id);
-                        for ($i=0; $i <= 5; $i++) {
-                            // Removendo nome das imagens da linha referente ao produto 
-                            $path = $diretorio . $photoOld['photo'.$i];
+                        for ($i = 0; $i <= 5; $i++) {
+                            // Removendo nome das imagens do diretório referente ao produto 
+                            $path = $diretorio . $photoOld['photo' . $i];
                             unlink($path);
                         }
                         // Conferindo se quantas imagens foram selecionadas e se ultrapassa o limite de 5
@@ -163,7 +162,7 @@ class ProductController extends Action
                                     header("Location: /createproduct?feedback=$feedback");
                                     exit;
                                 }
-                                
+
                                 // Mover imagens para diretório
                                 if (move_uploaded_file($_FILES['photo']['tmp_name'][$i], $diretorio . $nomeImg)) {
                                     $smartphone->__set('photo' . $i, $nomeImg);
@@ -172,10 +171,10 @@ class ProductController extends Action
                         }
                     } else {
                         $photoOld = $smartphone->show($id);
-                        for ($i=0; $i <= 5; $i++) {
-                                //reculpera o nome da foto atual caso não foi feito nenhum upload
-                                $smartphone->__set('photo'.$i, $photoOld['photo'.$i]);
-                            }
+                        for ($i = 0; $i <= 5; $i++) {
+                            //reculpera o nome da foto atual caso não foi feito nenhum upload
+                            $smartphone->__set('photo' . $i, $photoOld['photo' . $i]);
+                        }
                     }
                     // Salvando demais atributos
                     $smartphone->__set('marca', $_POST['marca']);
@@ -206,6 +205,36 @@ class ProductController extends Action
 
     public function delete()
     {
-        
+        session_start();
+        if ($_SESSION['id'] != '') {
+            try {
+                $product = $_GET['p'];
+                $id = $_GET['id'];
+                if ($product == 'smartphone') {
+                    $smartphone = Container::getModel('Smartphone');
+                    $diretorio = 'storage/products/smartphones/';
+                    $photoOld = $smartphone->show($id);
+                    for ($i = 0; $i <= 5; $i++) {
+                        // Removendo nome das imagens do diretório referente ao produto 
+                        $path = $diretorio . $photoOld['photo' . $i];
+                        unlink($path);
+                    }
+                    $smartphone->__set('id', $id);
+                    $smartphone->delete($id);
+                    $feedback = 'smartphonedelete';
+                    header("Location: /listproducts?feedback=$feedback");
+                    exit;
+                }
+            } catch (\PDOException $e) {
+                if ($e->errorInfo[1]) {
+                    $erro = $e->errorInfo[1];
+                    $feedback = 'updateerror';
+                    header("Location: /editproduct?id=$id&feedback=$feedback&error=$erro");
+                    exit;
+                }
+            }
+        } else {
+            header('Location: /?login=erro');
+        }
     }
 }

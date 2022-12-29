@@ -169,7 +169,13 @@ class Route extends Bootstrap {
                 'controller' => 'ProductController',
                 'action' => 'update'
             );
-            
+
+            //Deletar dados do produto
+            $routes['deleteproduct'] = array(
+                'route' => '/deleteproduct',
+                'controller' => 'ProductController',
+                'action' => 'delete'
+            );
             
         $this->setRoutes($routes);
     }
