@@ -149,11 +149,20 @@ class Route extends Bootstrap {
                 'action' => 'create'
             );
 
+            // Armazena produto
             $routes['storeproduct'] = array(
                 'route' => '/storeproduct',
                 'controller' => 'ProductController',
                 'action' => 'store'
             );
+
+            // Mosta dados do produto pelo id
+            $routes['editproduct'] = array(
+                'route' => '/editproduct',
+                'controller' => 'ProductController',
+                'action' => 'show'
+            );
+            
             
         $this->setRoutes($routes);
     }

@@ -24,15 +24,9 @@
                             <div class="tab-pane fade active show" id="smartphone" role="tabpanel">
                                 <h4 class="d-flex justify-content-center">Novo Smartphone</h4>
                                 <form action="/storeproduct?p=newsmartphone" method="post" enctype="multipart/form-data">
-                                    <div class="d-flex align-items-start align-items-sm-center gap-4" style="margin: 2%;">
-                                        <img src="../assets/img/elements/13.jpg" alt="user-avatar " class="d-block rounded" height="100" width="100" id="uploadedAvatar">
-                                        <div class="button-wrapper">
-                                        <small class="text-muted">Limite: 5 Imagens</small><br>
-                                            <label for="upload" class="btn btn-info me-2 mb-4" tabindex="0">
-                                                <span class="d-none d-sm-block">Adicionar Imagens </span>
-                                                <i class="bx bx-upload d-block d-sm-none"></i>
-                                                <input type="file" id="upload" class="account-file-input" hidden="" name="photo[]" multiple accept="image/png, image/jpg">
-                                            </label>
+                                    <div class="col-md-12 col-lg-12 align-items-start align-items-sm-center gap-4" style="padding-left: 30%;padding-right: 30%;">
+                                        <div class="input-group pt-3">
+                                            <input type="file" class="form-control" id="photo" onchange="previewImg()" aria-describedby="inputGroupFileAddon04" name="photo[]" aria-label="Upload" multiple>
                                         </div>
                                     </div>
                                     <div class="row gy-3">

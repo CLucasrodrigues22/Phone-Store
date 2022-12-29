@@ -100,7 +100,12 @@ class ProductController extends Action
 
     public function show()
     {
-
+        $product = $_GET['p'];
+        
+        if($product == 'smartphone')
+        {
+            
+        }
     }
 
     public function update()
