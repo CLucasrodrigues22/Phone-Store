@@ -36,6 +36,12 @@ class Smartphone extends Model
         return $this->db->query($q)->fetchAll();
     }
 
+    public function show($id)
+    {
+        $q = "select * from smartphones where id = $id";
+        return $this->db->query($q)->fetch();
+    }
+
     public function create()
     {
         $q = "insert into smartphones(marca, modelo, sistema, camera, memoria, ram, photo0, photo1, photo2, photo3, photo4) values (:marca, :modelo, :sistema, :camera, :memoria, :ram, :photo0, :photo1, :photo2, :photo3, :photo4)";

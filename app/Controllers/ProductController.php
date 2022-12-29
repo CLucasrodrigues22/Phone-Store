@@ -101,10 +101,13 @@ class ProductController extends Action
     public function show()
     {
         $product = $_GET['p'];
-        
+
         if($product == 'smartphone')
         {
-            
+            $id = $_GET['id'];
+            $smartphone = Container::getModel('Smartphone');
+            $this->view->smartphone = $smartphone->show($id);
+            $this->view('products/show', 'header');
         }
     }
 

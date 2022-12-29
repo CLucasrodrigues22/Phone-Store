@@ -1,0 +1,88 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Formulário /</span> Cadastro de Produto</h4>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card mb-4">
+                <div class="card h-100">
+                    <div class="card-header justify-content-center">
+                        <h4 class="d-flex justify-content-center">Dados do Smartphone</h4>
+                    </div>
+                    <div class="card-body nav-align-top mb-4">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="smartphone" role="tabpanel">
+                                <form action="/storeproduct?p=newsmartphone" method="post" enctype="multipart/form-data">
+                                    <div class="col-md-12 col-lg-12 align-items-start align-items-sm-center gap-4" style="padding-left: 30%;padding-right: 30%;">
+                                        <div id="<?= 'phone' . $this->view->smartphone['id'] ?>" class="carousel slide" data-bs-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <?php for ($i = 0; $i <= 4; $i++) : ?>
+                                                    <?php if (!is_null($this->view->smartphone["photo{$i}"])) : ?>
+                                                        <li data-bs-target="#<?= 'phone' . $this->view->smartphone['id'] ?>" data-bs-slide-to="<?= $i ?>" class="<?= $i == 0 ? 'active' : '' ?>" aria-current="true"></li>
+                                                    <?php endif; ?>
+                                                <?php endfor; ?>
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                <?php for ($i = 0; $i <= 4; $i++) : ?>
+                                                    <?php if (!is_null($this->view->smartphone["photo{$i}"])) : ?>
+                                                        <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
+                                                            <img class="d-block w-100" src="<?= (file_exists('storage/products/smartphones/' . $this->view->smartphone["photo$i"]) ? "storage/products/smartphones/" . $this->view->smartphone["photo$i"] : ''); ?>">
+                                                        </div>
+                                                    <?php endif; ?>
+                                                <?php endfor; ?>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#<?= 'phone' . $this->view->smartphone['id'] ?>" role="button" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#<?= 'phone' . $this->view->smartphone['id'] ?>" role="button" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </a>
+                                        </div>
+                                        <div class="input-group pt-3">
+                                            <input type="file" class="form-control" id="photo" onchange="previewImg()" aria-describedby="inputGroupFileAddon04" name="photo[]" aria-label="Upload" multiple>
+                                        </div>
+                                    </div>
+                                    <div class="row gy-3">
+                                        <div class="col-md">
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="marca"> Marca </label>
+                                                <input class="form-control" type="text" id="marca" name="marca" placeholder="Ex: Apple">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="modelo"> Modelo </label>
+                                                <input class="form-control" type="text" id="modelo" name="modelo" placeholder="Ex: Iphone 12 Pro Max">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="sistema "> Sistema Operacional </label>
+                                                <input class="form-control" type="text" id="sistema " name="sistema" placeholder="Ex: IOS 16">
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="camera"> Câmera </label>
+                                                <input class="form-control" type="text" id="camera" name="camera" placeholder="Ex: 48MP">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="memoria"> Armazenamento </label>
+                                                <input class="form-control" type="text" id="memoria" name="memoria" placeholder="Ex: 128GB">
+                                            </div>
+                                            <div class="form-check mt-3">
+                                                <label class="form-control-label" for="ram"> Memória RAM </label>
+                                                <input class="form-control" type="text" id="ram" name="ram" placeholder="Ex: 6GB RAM">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center pt-4 gap-2">
+                                        <div>
+                                            <button type="submit" class="btn btn-success">Salvar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
